@@ -2,7 +2,12 @@ import { useEffect, useState } from "react";
 import { obtenerProductos, type Producto } from "../services/productoService";
 import "./ProductoList.css";
 
-export const ProductoList = () => {
+interface Props {
+  onEditar: (producto: Producto) => void;
+  recarga: number;
+}
+
+export const ProductoList = ({ onEditar, recarga }: Props) => {
   const [productos, setProductos] = useState<Producto[]>([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(false);
@@ -20,7 +25,7 @@ export const ProductoList = () => {
       }
     };
     cargarProductos();
-  }, []);
+  }, [recarga]);
 
   return (
     <section className="producto-list" aria-labelledby="producto-list-title">
@@ -63,17 +68,16 @@ export const ProductoList = () => {
               <dl className="producto-card__details">
                 <div className="producto-card__detail">
                   <dt>Precio</dt>
-                  <dd>
-                    {new Intl.NumberFormat("es-ES", {
-                      maximumFractionDigits: 2,
-                    }).format(producto.precio)}
-                  </dd>
+                  <dd>${producto.precio.toFixed(2)} USD</dd>
                 </div>
                 <div className="producto-card__detail producto-card__detail--id">
                   <dt>ID</dt>
                   <dd>{producto.id}</dd>
                 </div>
               </dl>
+              <button type="button" className="producto-card__editar" onClick={() => onEditar(producto)}>
+                Editar
+              </button>
             </li>
           ))}
         </ul>

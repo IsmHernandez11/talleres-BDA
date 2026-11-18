@@ -1,4 +1,4 @@
-import {addDoc, collection, getDocs} from 'firebase/firestore';
+import {addDoc, collection, doc, getDocs, updateDoc} from 'firebase/firestore';
 import db from '../firebase';
 
 export interface Producto{id:string ,nombre:string, precio:number, stock:number}
@@ -17,4 +17,10 @@ export const obtenerProductos = async (): Promise<Producto[]> => {
     })) as Producto[];
    
     return productos;
+}
+
+// UPDATE: actualiza el documento que tiene ese id (no crea uno nuevo)
+export const actualizarProducto = async (id:string, nombre:string, precio:number, stock:number) => {
+    const docRef = doc(db, "productos", id);
+    await updateDoc(docRef, {nombre, precio, stock});
 }

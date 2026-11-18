@@ -17,7 +17,7 @@
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
-  color-scheme: light dark;
+  color-scheme: light;
   color: var(--text);
   background: var(--bg);
   font-synthesis: none;
@@ -51,19 +51,55 @@
 }
 
 #root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
   min-height: 100svh;
-  display: flex;
-  flex-direction: column;
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
+  background: #eef2f8;
+  color: #475467;
+}
+
+.app {
+  box-sizing: border-box;
+  width: min(100% - 2rem, 960px);
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.app__header {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.app__header h1 {
+  margin: 0 0 0.4rem;
+  font-size: clamp(1.75rem, 5vw, 2.4rem);
+  color: #202633;
+}
+
+.app__header p {
+  font-size: 0.95rem;
+  color: #667085;
+}
+
+.mensaje {
+  margin-bottom: 1rem;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.mensaje--exito {
+  background: #e8f6ee;
+  color: #1e7a45;
+}
+
+.mensaje--error {
+  background: #fdeeee;
+  color: #a33a3a;
 }
 
 h1,

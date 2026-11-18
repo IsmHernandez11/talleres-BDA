@@ -1,7 +1,6 @@
 .producto-list {
   box-sizing: border-box;
-  width: min(100% - 3rem, 960px);
-  margin: 0 auto 4rem;
+  margin: 0 0 3rem;
   color: #252b36;
   text-align: left;
 }
@@ -170,4 +169,23 @@
   .producto-card:hover {
     transform: none;
   }
+}
+
+.producto-card__editar {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.55rem;
+  border: 1px solid #6d5dfc;
+  border-radius: 10px;
+  background: #fff;
+  color: #5b4bdb;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.producto-card__editar:hover {
+  background: #6d5dfc;
+  color: #fff;
 }
